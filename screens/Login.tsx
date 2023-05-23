@@ -1,9 +1,7 @@
-import { View } from "react-native";
+import { PlayerName } from "../components/PlayerName";
 
 export function Login() {
     return (
-        <View>
-            
-        </View>
+        <PlayerName />
     )
 }

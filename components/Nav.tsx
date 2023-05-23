@@ -30,7 +30,7 @@ export function Nav() {
                     options={{ headerShown: false }}
                     name='Login' component={Login} />
                 <Stack.Screen
-                    options={{ headerShown: false }} 
+                    options={{ headerShown: true }} 
                     name='Home' component={Home} />
                 <Stack.Screen
                     options={{ headerShown: false }}
