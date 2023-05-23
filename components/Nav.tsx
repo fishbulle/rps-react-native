@@ -32,10 +32,10 @@ export function Nav() {
                     options={{ headerShown: true }} 
                     name='Home' component={Home} />
                 <Stack.Screen
-                    options={{ headerShown: false }}
+                    options={{ headerShown: true }}
                     name='Game' component={Game} />
                 <Stack.Screen
-                    options={{ headerShown: false }}
+                    options={{ headerShown: true }}
                     name='OpenGames' component={OpenGames} />
             </Stack.Navigator>
         </NavigationContainer>

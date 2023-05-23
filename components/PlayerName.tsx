@@ -1,46 +1,27 @@
 import { ActivityIndicator, Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "react-native"
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-
+import { RpsApi } from "./Api";
 
 export function PlayerName() {
     type Nav = {
         navigate: (value: string) => void
     }
     const nav = useNavigation<Nav>()
-    const [isLoading, setLoading] = useState(true);
-    const [token, setToken] = useState('')
+    const [isLoading, setLoading] = useState(true)
     const [username, setUsername] = useState('')
 
-    const fetchToken = async () => {
-        try {
-            const response = await fetch('http://192.168.1.112/players/token')
-            const text = await response.json()
-            return setToken(text.playerId)
-            // return await AsyncStorage.setItem('token', token)
-        } catch (error) {
-            console.log(error)
-        } finally {
+    useEffect(() => {
+        if (RpsApi.getToken() === null) {
+            RpsApi.fetchToken()
             setLoading(false)
         }
-    }
-
-    useEffect(() => {
-        fetchToken()
     }, [])
 
-    const handleUsername = async (username: string) => {
-
-
-        // try {
-        //     await AsyncStorage.setItem('username', username)
-        // } catch (error) {
-        //     console.log(error)
-        // }
-
+    const handleUsername = (username: string) => {
+        RpsApi.setUsername(username)
+        setLoading(false)
         // nav.navigate('Home')
-
     }
 
     return (
