@@ -1,4 +1,4 @@
-import { ActivityIndicator, Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "react-native"
+import { Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "react-native"
 import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { RpsApi } from "./Api";
@@ -8,27 +8,23 @@ export function PlayerName() {
         navigate: (value: string) => void
     }
     const nav = useNavigation<Nav>()
-    const [isLoading, setLoading] = useState(true)
+    // const [isLoading, setLoading] = useState(true)
     const [username, setUsername] = useState('')
 
     useEffect(() => {
-        if (RpsApi.getToken() === null) {
             RpsApi.fetchToken()
-            setLoading(false)
-        }
     }, [])
 
     const handleUsername = (username: string) => {
         RpsApi.setUsername(username)
-        setLoading(false)
         // nav.navigate('Home')
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            {isLoading ? (
+            {/* {isLoading ? (
                 <ActivityIndicator color='#000' />
-            ) : (
+            ) : ( */}
                 <View>
                     <Text style={styles.text}>What's your name?</Text>
                     <TextInput
@@ -41,7 +37,7 @@ export function PlayerName() {
                         onPress={() => handleUsername(username)}>
                         <Text>Let's Play!</Text></Pressable>
                 </View>
-            )}
+            {/* )} */}
         </SafeAreaView>
     )
 }
