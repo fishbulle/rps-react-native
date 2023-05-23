@@ -15,10 +15,10 @@ export function PlayerName() {
 
     const fetchToken = async () => {
         try {
-            const response = await fetch('http://localhost:8080/players/token')
+            const response = await fetch('http://192.168.1.112/players/token')
             const text = await response.json()
-            setToken(text)
-            return await AsyncStorage.setItem('token', token)
+            return setToken(text.playerId)
+            // return await AsyncStorage.setItem('token', token)
         } catch (error) {
             console.log(error)
         } finally {

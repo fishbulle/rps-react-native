@@ -20,7 +20,6 @@ export function Nav() {
                     headerTitleStyle: {
                         fontSize: 30,
                         color: '#571d0b',
-                        fontFamily: 'monospace',
                         fontWeight: 'bold'
                     },
                     headerTitleAlign: 'center'
