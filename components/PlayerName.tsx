@@ -9,7 +9,6 @@ export function PlayerName() {
         navigate: (value: string) => void
     }
     const nav = useNavigation<Nav>()
-    // const [isLoading, setLoading] = useState(true)
     const [username, setUsername] = useState('')
 
     useEffect(() => {
