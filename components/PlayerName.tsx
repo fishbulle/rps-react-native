@@ -1,7 +1,7 @@
 import { Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "react-native"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { RpsApi } from "./Api";
+import { setPlayer } from "./Api"
 
 export function PlayerName() {
     type Nav = {
@@ -11,32 +11,28 @@ export function PlayerName() {
     // const [isLoading, setLoading] = useState(true)
     const [username, setUsername] = useState('')
 
-    useEffect(() => {
-            RpsApi.fetchToken()
-    }, [])
-
     const handleUsername = (username: string) => {
-        RpsApi.setUsername(username)
-        // nav.navigate('Home')
+        setPlayer(username)
     }
+
 
     return (
         <SafeAreaView style={styles.container}>
             {/* {isLoading ? (
                 <ActivityIndicator color='#000' />
             ) : ( */}
-                <View>
-                    <Text style={styles.text}>What's your name?</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="username"
-                        autoComplete="off"
-                        value={username}
-                        onChangeText={(value) => setUsername(value)} />
-                    <Pressable
-                        onPress={() => handleUsername(username)}>
-                        <Text>Let's Play!</Text></Pressable>
-                </View>
+            <View>
+                <Text style={styles.text}>What's your name?</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="username"
+                    autoComplete="off"
+                    value={username}
+                    onChangeText={(value) => setUsername(value)} />
+                <Pressable
+                    onPress={() => handleUsername(username)}>
+                    <Text>Let's Play!</Text></Pressable>
+            </View>
             {/* )} */}
         </SafeAreaView>
     )
