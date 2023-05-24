@@ -2,6 +2,7 @@ import { Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "reac
 import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { fetchToken, setData, setPlayer } from "./Api"
+import { MyButton } from "./MyButton"
 
 export function PlayerName() {
     type Nav = {
@@ -35,9 +36,10 @@ export function PlayerName() {
                     autoComplete="off"
                     value={username}
                     onChangeText={(value) => setUsername(value)} />
-                <Pressable
-                    onPress={() => handleUsername(username)}>
-                    <Text>Let's Play!</Text></Pressable>
+                <MyButton
+                    style={{}}
+                    text="Let's Play!"
+                    onPress={() => handleUsername(username)} />
             </View>
             {/* )} */}
         </SafeAreaView>

@@ -1,9 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { Login } from "../screens/Login"
-import { Home } from "../screens/Home"
-import { Game } from "../screens/Game"
-import { OpenGames } from "../screens/OpenGames"
+import { Login } from "../screens/LoginScreen"
+import { Home } from "../screens/HomeScreen"
+import { Game } from "../screens/GameScreen"
+import { OpenGames } from "../screens/OpenGamesScreen"
 
 export function Nav() {
     const Stack = createNativeStackNavigator()
