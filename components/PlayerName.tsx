@@ -1,7 +1,7 @@
 import { Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "react-native"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { setPlayer } from "./Api"
+import { fetchToken, setData, setPlayer } from "./Api"
 
 export function PlayerName() {
     type Nav = {
@@ -11,8 +11,14 @@ export function PlayerName() {
     // const [isLoading, setLoading] = useState(true)
     const [username, setUsername] = useState('')
 
-    const handleUsername = (username: string) => {
-        setPlayer(username)
+    useEffect(() => {
+        fetchToken()
+    }, [])
+
+    const handleUsername = async (username: string) => {
+        await setPlayer(username)
+        await setData('username', username)
+        nav.navigate('Home')
     }
 
 

@@ -1,4 +1,6 @@
-import { AsyncStorage } from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+const baseURL = 'http://192.168.1.112:8080'
 
 export const setData = async (key, value) => {
     try {
@@ -18,19 +20,25 @@ export const getData = async (key) => {
     }
 }
 
-export const fetchToken = async => {
-    
+export const fetchToken = async () => {
+    try {
+        const res = await fetch(baseURL + '/players/token')
+        const text = await res.json()
+        return await setData('token', text)
+    } catch (error) {
+        return console.log(`Something went wrong ${error}`)
+    }
 }
 
 export const setPlayer = async (username) => {
     try {
-        const res = await fetch('http://192.168.1.112:8080/players/create', {
+        const res = await fetch(baseURL + '/players/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                token: token
+                token: await getData('token')
             },
-            body: JSON.stringify({ 'username': username })
+            body: JSON.stringify({ username: username })
         });
         const text = await res.json()
         return console.log(text)
@@ -41,7 +49,7 @@ export const setPlayer = async (username) => {
 
 export const startGame = async () => {
     try {
-        const response = await fetch('http://192.168.1.112:8080/games/create', {
+        const response = await fetch(baseURL + '/games/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +65,7 @@ export const startGame = async () => {
 
 export const openGames = async () => {
     try {
-        const res = await fetch('http://192.168.1.112:8080/games');
+        const res = await fetch(baseURL + '/games');
         return await res.json();
     } catch (error) {
         return console.log(`Something went wrong ${error}`);
@@ -66,7 +74,7 @@ export const openGames = async () => {
 
 export const gameInfo = async () => {
     try {
-        const res = await fetch('http://192.168.1.112:8080/games/gameInfo', {
+        const res = await fetch(baseURL + '/games/gameInfo', {
             headers: {
                 'Content-Type': 'application/json',
                 gameId: RpsApi.getGameId(),
@@ -82,7 +90,7 @@ export const gameInfo = async () => {
 
 export const joinGame = async (gameId) => {
     try {
-        const res = await fetch(`http://192.168.1.112:8080/games/add/${gameId}`, {
+        const res = await fetch(baseURL + `/games/add/${gameId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,7 +106,7 @@ export const joinGame = async (gameId) => {
 
 export const makeMove = async (move) => {
     try {
-        const res = await fetch(`http://192.168.1.112:8080/games/update/${move}`, {
+        const res = await fetch(baseURL + `/games/update/${move}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
