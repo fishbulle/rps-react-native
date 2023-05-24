@@ -29,13 +29,13 @@ export function Nav() {
                     options={{ headerShown: false }}
                     name='Login' component={Login} />
                 <Stack.Screen
-                    options={{ headerShown: true }} 
+                    options={{ headerShown: false }} 
                     name='Home' component={Home} />
                 <Stack.Screen
-                    options={{ headerShown: true }}
+                    options={{ headerShown: false }}
                     name='Game' component={Game} />
                 <Stack.Screen
-                    options={{ headerShown: true }}
+                    options={{ headerShown: false }}
                     name='OpenGames' component={OpenGames} />
             </Stack.Navigator>
         </NavigationContainer>

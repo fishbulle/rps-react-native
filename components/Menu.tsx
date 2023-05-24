@@ -1,6 +1,7 @@
 import { SafeAreaView, View, Text, StyleSheet } from "react-native"
 import { MyButton } from "./MyButton"
 import { useNavigation } from "@react-navigation/native"
+import { Background } from "./BackgroundImg"
 
 export function Menu() {
     type Nav = {
@@ -10,16 +11,16 @@ export function Menu() {
 
     const handleStartGame = () => {
         console.log('Startar nytt spel...')
-        nav.navigate('Game')        
+        nav.navigate('Game')
     }
 
     const handleListOpenGames = () => {
-        console.log('Skickar dig till sidan för öppna spel...')     
-        nav.navigate('OpenGames')   
+        console.log('Skickar dig till sidan för öppna spel...')
+        nav.navigate('OpenGames')
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <Background>
             <View>
                 <Text style={styles.text}>What do you want to do?</Text>
             </View>
@@ -32,22 +33,15 @@ export function Menu() {
                 style={{}}
                 text="List Open Games"
                 onPress={() => handleListOpenGames()} />
-        </SafeAreaView>
+        </Background>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f3dfd5',
-        alignItems: 'stretch',
-        justifyContent: 'center',
-        padding: 30
-    },
     text: {
         fontSize: 25,
-        color: '#571d0b',
+        color: '#fff',
         textAlign: 'center',
         paddingBottom: 40
-    }
+    },
 })

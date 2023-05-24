@@ -55,9 +55,5 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         paddingBottom: 40
-    },
-    buttonContainer: {
-        justifyContent: 'center',
-        alignItems: 'center'
     }
 })
