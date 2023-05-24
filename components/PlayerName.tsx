@@ -1,8 +1,9 @@
-import { Pressable, SafeAreaView, TextInput, Text, StyleSheet, View } from "react-native"
+import { TextInput, Text, StyleSheet, View } from "react-native"
 import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { fetchToken, setData, setPlayer } from "./Api"
 import { MyButton } from "./MyButton"
+import { Background } from "./BackgroundImg"
 
 export function PlayerName() {
     type Nav = {
@@ -21,12 +22,8 @@ export function PlayerName() {
         nav.navigate('Home')
     }
 
-
     return (
-        <SafeAreaView style={styles.container}>
-            {/* {isLoading ? (
-                <ActivityIndicator color='#000' />
-            ) : ( */}
+        <Background>
             <View>
                 <Text style={styles.text}>What's your name?</Text>
                 <TextInput
@@ -40,19 +37,11 @@ export function PlayerName() {
                     text="Let's Play!"
                     onPress={() => handleUsername(username)} />
             </View>
-            {/* )} */}
-        </SafeAreaView>
+        </Background>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f3dfd5',
-        alignItems: 'stretch',
-        justifyContent: 'center',
-        padding: 30
-    },
     input: {
         backgroundColor: "white",
         borderWidth: 1,
@@ -63,7 +52,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 35,
-        color: '#571d0b',
+        color: '#fff',
         textAlign: 'center',
         paddingBottom: 40
     },
