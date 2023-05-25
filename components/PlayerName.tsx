@@ -1,9 +1,10 @@
-import { TextInput, Text, StyleSheet, View } from "react-native"
-import { useEffect, useState } from "react"
+import { TextInput, StyleSheet, View } from "react-native"
+import { useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { fetchToken, setData, setPlayer } from "./Api"
 import { MyButton } from "./MyButton"
 import { Background } from "./BackgroundImg"
+import { LMLight } from "./MyFonts"
+import { setPlayerName } from "./Api"
 
 export function PlayerName() {
     type Nav = {
@@ -11,21 +12,18 @@ export function PlayerName() {
     }
     const nav = useNavigation<Nav>()
     const [username, setUsername] = useState('')
+    const [player, setPlayer] = useState('')
 
-    useEffect(() => {
-        fetchToken()
-    }, [])
+    const handleUsername = (username: string) => {
+        setPlayerName(username)
 
-    const handleUsername = async (username: string) => {
-        await setPlayer(username)
-        await setData('username', username)
         nav.navigate('Home')
     }
 
     return (
         <Background>
             <View>
-                <Text style={styles.text}>What's your name?</Text>
+                <LMLight style={styles.text}>What's your name?</LMLight>
                 <TextInput
                     style={styles.input}
                     placeholder="username"

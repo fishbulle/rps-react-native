@@ -1,4 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import useTokenContext from '../hooks/useTokenContext'
+import { TokenContext } from './TokenContext'
+// import axios from 'axios'
 
 const baseURL = 'http://192.168.1.112:8080'
 
@@ -20,25 +23,16 @@ export const getData = async (key) => {
     }
 }
 
-export const fetchToken = async () => {
-    try {
-        const res = await fetch(baseURL + '/players/token')
-        const text = await res.json()
-        return await setData('token', text)
-    } catch (error) {
-        return console.log(`Something went wrong ${error}`)
-    }
-}
-
-export const setPlayer = async (username) => {
+export const setPlayerName = async (username) => {
+    const token = useTokenContext()
     try {
         const res = await fetch(baseURL + '/players/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                token: await getData('token')
+                token: token
             },
-            body: JSON.stringify({ username: username })
+            body: JSON.stringify({ "username": username })
         });
         const text = await res.json()
         return console.log(text)
