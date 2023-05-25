@@ -20,14 +20,6 @@ export const getData = async (key: string) => {
     }
 }
 
-// export const fetchToken = async () => {
-//     try {
-//         const res = await fetch(baseURL + '/players/token')
-//         return await res.json()
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`)
-//     }
-// }
 export const fetchToken = () =>
     fetch(baseURL + '/players/token')
         .then((response) => response.json());
@@ -36,8 +28,8 @@ export const setPlayerName = (token: string, username: string) =>
     fetch(baseURL + '/players/create', {
         method: "POST",
         headers: {
+            "Content-Type": "application/json",
             token: token,
-            "Content-Type": "application/json"
         },
         body: JSON.stringify({ username: username })
     });

@@ -3,8 +3,8 @@ import { useContext, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { LMLight } from "./MyFonts"
-import { TokenContext } from "./Nav"
 import { setPlayerName } from "./Api"
+import { TokenContext } from "./TokenContext"
 
 export function PlayerName() {
     type Nav = {
@@ -16,7 +16,7 @@ export function PlayerName() {
 
     const handleUsername = () => {
         setPlayerName(token, username)
-            .then(res => nav.navigate('Home'))
+            .then(res => console.log(res))
             .catch((error) => console.error(error));
         nav.navigate('Home')
     }
