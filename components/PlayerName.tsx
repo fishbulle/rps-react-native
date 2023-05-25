@@ -15,9 +15,10 @@ export function PlayerName() {
     const token = useContext(TokenContext)
 
     const handleUsername = () => {
-        setPlayerToServer(token, username)
-            .then(res => nav.navigate('Home'))
-            .catch((error) => console.error(error));
+        // setPlayerToServer(token, username)
+        //     .then(res => nav.navigate('Home'))
+        //     .catch((error) => console.error(error));
+        nav.navigate('Home')
     }
 
     return (

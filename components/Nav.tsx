@@ -12,20 +12,7 @@ export function Nav() {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="Login"
-                screenOptions={{
-                    headerStyle: {
-                        backgroundColor: '#fff'
-                    },
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontSize: 30,
-                        color: '#571d0b',
-                        fontWeight: 'bold'
-                    },
-                    headerTitleAlign: 'center'
-
-                }}>
+                initialRouteName="Login">
                 <Stack.Screen
                     options={{ headerShown: false }}
                     name='Login' component={Login} />
