@@ -13,9 +13,9 @@ export function GamePage() {
     return (
         <View style={styles.container}>
             <View style={styles.container2}>
-                <LMLight style={styles.text}>PLAYER1</LMLight>
+                <LMLight style={styles.text}>Zelda</LMLight>
                 <LMLightItalic style={styles.text2}> vs </LMLightItalic>
-                <LMLight style={styles.text}>PLAYER2</LMLight>
+                <LMLight style={styles.text}>Link</LMLight>
             </View>
             <View style={styles.container2}>
                 <MyButton 

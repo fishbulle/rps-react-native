@@ -1,15 +1,15 @@
-import React, { createContext, useEffect, useState } from 'react';
+// import React, { createContext, useEffect, useState } from 'react';
 
-const PlayerContext = createContext()
+// const PlayerContext = createContext()
 
-const PlayerContextProvider = ({ children }) => {
-    const [player, setPlayer] = useState(null)
+// const PlayerContextProvider = ({ children }) => {
+//     const [player, setPlayer] = useState(null)
 
-    return (
-        <PlayerContext.Provider value={{ player, setPlayer }}>
-            {children}
-        </PlayerContext.Provider>
-    )
-}
+//     return (
+//         <PlayerContext.Provider value={{ player, setPlayer }}>
+//             {children}
+//         </PlayerContext.Provider>
+//     )
+// }
 
-export { PlayerContext, PlayerContextProvider }
+// export { PlayerContext, PlayerContextProvider }
