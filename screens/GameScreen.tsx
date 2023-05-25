@@ -1,9 +1,10 @@
-import { View } from "react-native";
+import { Background } from "../components/BackgroundImg";
+import { Header } from "../components/Header";
 
 export function Game() {
     return (
-        <View>
-            
-        </View>
+        <Background>
+            <Header />
+        </Background>
     )
 }

@@ -1,6 +1,5 @@
-import { Background } from "./BackgroundImg";
-import { LMLightItalic } from "./MyFonts";
-import { StyleSheet } from "react-native";
+import { LMLight} from "./MyFonts";
+import { StyleSheet, View } from "react-native";
 
 {/* flatList som mappar öppna spel
     och tar spelaren till det öppna spelet den klickar på */ }
@@ -8,13 +7,18 @@ import { StyleSheet } from "react-native";
     export function OpenGamesList() {
 
         return (
-            <Background>
-                <LMLightItalic style={styles.text}>OPEN GAMES:</LMLightItalic>
-            </Background>
+            <View style={styles.container}>
+                <LMLight style={styles.text}>OPEN GAMES:</LMLight>
+            </View>
         )
     }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 4,
+        paddingLeft: 10,
+        paddingRight: 10
+    },
     text: {
         fontSize: 35,
         color: '#fff',

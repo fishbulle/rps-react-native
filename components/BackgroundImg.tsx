@@ -5,13 +5,13 @@ interface Props {
 }
 
 export const Background = ({ children }: Props) => {
-     return (
-         <SafeAreaView style={styles.container}>
-         <ImageBackground source={require('../assets/sky.jpg')} style={styles.image} resizeMode="cover">
-            {children}
-         </ImageBackground>
-         </SafeAreaView>
-     )
+    return (
+        <SafeAreaView style={styles.container}>
+            <ImageBackground source={require('../assets/sky.jpg')} style={styles.image} resizeMode="cover">
+                {children}
+            </ImageBackground>
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({
