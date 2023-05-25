@@ -1,10 +1,11 @@
 import { TextInput, StyleSheet, View } from "react-native"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { Background } from "./BackgroundImg"
-import { LMLight } from "./MyFonts"
-import { setPlayerName } from "./Api"
+import { LMLightItalic } from "./MyFonts"
+import { setPlayerToServer } from "./Api"
+import { TokenContext } from "./TokenContext"
 
 export function PlayerName() {
     type Nav = {
@@ -12,18 +13,18 @@ export function PlayerName() {
     }
     const nav = useNavigation<Nav>()
     const [username, setUsername] = useState('')
-    const [player, setPlayer] = useState('')
+    const token = useContext(TokenContext)
 
-    const handleUsername = (username: string) => {
-        setPlayerName(username)
-
-        nav.navigate('Home')
+    const handleUsername = () => {
+        setPlayerToServer(token, username)
+            .then(res => nav.navigate('Home'))
+            .catch((error) => console.error(error));
     }
 
     return (
         <Background>
             <View>
-                <LMLight style={styles.text}>What's your name?</LMLight>
+                <LMLightItalic style={styles.text}>What's your name?</LMLightItalic>
                 <TextInput
                     style={styles.input}
                     placeholder="username"
@@ -31,9 +32,8 @@ export function PlayerName() {
                     value={username}
                     onChangeText={(value) => setUsername(value)} />
                 <MyButton
-                    style={{}}
                     text="Let's Play!"
-                    onPress={() => handleUsername(username)} />
+                    onPress={handleUsername} />
             </View>
         </Background>
     )

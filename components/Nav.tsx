@@ -6,6 +6,7 @@ import { Game } from "../screens/GameScreen"
 import { OpenGames } from "../screens/OpenGamesScreen"
 
 export function Nav() {
+
     const Stack = createNativeStackNavigator()
 
     return (
@@ -29,7 +30,7 @@ export function Nav() {
                     options={{ headerShown: false }}
                     name='Login' component={Login} />
                 <Stack.Screen
-                    options={{ headerShown: false }} 
+                    options={{ headerShown: false }}
                     name='Home' component={Home} />
                 <Stack.Screen
                     options={{ headerShown: false }}

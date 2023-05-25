@@ -1,14 +1,14 @@
-import { useContext } from "react"
-import { TokenContext } from "../components/TokenContext"
+// import { useContext } from "react"
+// import { TokenContext } from "../components/TokenContext"
 
-const useTokenContext = () => {
-    const context = useContext(TokenContext)
+// const useTokenContext = () => {
+//     const context = useContext(TokenContext)
 
-    if (context === undefined) {
-        throw new Error('useTokenContext was used outside of its Provider')
-    }
+//     if (context === undefined) {
+//         throw new Error('useTokenContext was used outside of its Provider')
+//     }
 
-    return context
-}
+//     return context
+// }
 
-export default useTokenContext
+// export default useTokenContext

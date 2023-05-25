@@ -2,6 +2,7 @@ import { SafeAreaView, View, Text, StyleSheet } from "react-native"
 import { MyButton } from "./MyButton"
 import { useNavigation } from "@react-navigation/native"
 import { Background } from "./BackgroundImg"
+import { LMItalic, LMLightItalic } from "./MyFonts"
 
 export function Menu() {
     type Nav = {
@@ -22,15 +23,13 @@ export function Menu() {
     return (
         <Background>
             <View>
-                <Text style={styles.text}>What do you want to do?</Text>
+                <LMLightItalic style={styles.text}>What do you want to do?</LMLightItalic>
             </View>
             {/* länkar till sidorna för starta nytt spel eller joina öppet spel */}
             <MyButton
-                style={{}}
                 text="Start New Game"
                 onPress={() => handleStartGame()} />
             <MyButton
-                style={{}}
                 text="List Open Games"
                 onPress={() => handleListOpenGames()} />
         </Background>

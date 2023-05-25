@@ -1,9 +1,7 @@
-import { View } from "react-native";
+import { OpenGamesList } from "../components/OpenGamesList";
 
 export function OpenGames() {
     return (
-        <View>
-
-        </View>
+        <OpenGamesList />
     )
 }

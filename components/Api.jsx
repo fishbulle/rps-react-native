@@ -1,6 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import useTokenContext from '../hooks/useTokenContext'
-import { TokenContext } from './TokenContext'
 // import axios from 'axios'
 
 const baseURL = 'http://192.168.1.112:8080'
@@ -23,23 +21,43 @@ export const getData = async (key) => {
     }
 }
 
-export const setPlayerName = async (username) => {
-    const token = useTokenContext()
-    try {
-        const res = await fetch(baseURL + '/players/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                token: token
-            },
-            body: JSON.stringify({ "username": username })
-        });
-        const text = await res.json()
-        return console.log(text)
-    } catch (error) {
-        return console.log(`Something went wrong ${error}`);
-    }
-}
+// export const fetchToken = async () => {
+//     try {
+//         const res = await fetch(baseURL + '/players/token')
+//         return await res.json()
+//     } catch (error) {
+//         return console.log(`Something went wrong ${error}`)
+//     }
+// }
+export const fetchToken = () =>
+    fetch(baseURL + '/players/token')
+        .then((response) => response.json());
+
+export const setPlayerToServer = (token, username) =>
+    fetch(baseURL + '/players/create', {
+        method: "POST",
+        headers: {
+            token: token,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username: username })
+    });
+
+// export const setPlayerName = async (token, username) => {
+//     try {
+//         const res = await fetch(baseURL + '/players/create', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 token: token
+//             },
+//             body: JSON.stringify({ username: username })
+//         });
+//         return await res.json()
+//     } catch (error) {
+//         return console.log(`Something went wrong ${error}`);
+//     }
+// }
 
 export const startGame = async () => {
     try {

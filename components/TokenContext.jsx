@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-const TokenContext = createContext()
+const TokenContext = createContext('')
 
 const TokenContextProvider = ({ children }) => {
-    const [token, setToken] = useState(null)
+    const [token, setToken] = useState('')
 
     useEffect(() => {
         const fetchToken = async () => {

@@ -1,19 +1,26 @@
-import { Pressable, Text, StyleSheet, View } from "react-native"
+import { Pressable, StyleSheet, View } from "react-native"
+import { LM } from "./MyFonts"
 
 interface Props {
     text: string,
-    onPress(): void,
-    style: {}
+    onPress(): void
 }
 
-export const MyButton = ({ text, onPress, style}: Props) => {
+export const MyButton = ({ text, onPress}: Props) => {
 
     return (
         <View style={styles.buttonContainer}>
         <Pressable
-            style={[styles.button, style]}
+                style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed
+                            ? 'rgb(210, 230, 255)'
+                            : '#000099'
+                    },
+                    styles.button
+                ]}
             onPress={onPress}>
-            <Text style={styles.buttonText}>{text}</Text>
+            <LM style={styles.buttonText}>{text}</LM>
         </Pressable>
         </View>
     )
@@ -25,8 +32,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        backgroundColor: '#000099',
-        paddingTop: 7,
+        paddingTop: 8,
         paddingBottom: 8,
         paddingLeft: 15,
         paddingRight: 15,
@@ -41,6 +47,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textTransform: 'uppercase',
         fontSize: 20,
-        fontWeight: 'bold',
     }
 })
