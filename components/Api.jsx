@@ -5,7 +5,6 @@ const baseURL = 'http://192.168.1.112:8080'
 export const setData = async (key, value) => {
     try {
         await AsyncStorage.setItem(key, value)
-            .then(() => console.log(key, value))
     } catch (error) {
         console.log(error)
     }
@@ -13,8 +12,7 @@ export const setData = async (key, value) => {
 
 export const getData = async (key) => {
     try {
-        await AsyncStorage.getItem(key)
-            .then(() => console.log(key))
+        return await AsyncStorage.getItem(key)
     } catch (error) {
         console.log(error)
     }
@@ -23,7 +21,7 @@ export const getData = async (key) => {
 export const fetchToken = async () => {
     try {
         const res = await fetch(baseURL + '/players/token')
-        const text = res.json()
+        const text = await res.json()
         return await setData('token', text)
     } catch (e) {
         console.error(e)

@@ -1,5 +1,5 @@
 import { TextInput, StyleSheet, View } from "react-native"
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { LMLight } from "./MyFonts"
