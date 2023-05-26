@@ -3,8 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { LMLight } from "./MyFonts"
-import { setPlayerName } from "./Api"
-import { TokenContext } from "./TokenContext"
+import { fetchToken, setPlayerName } from "./Api"
 
 export function PlayerName() {
     type Nav = {
@@ -12,10 +11,13 @@ export function PlayerName() {
     }
     const nav = useNavigation<Nav>()
     const [username, setUsername] = useState('')
-    const token = useContext(TokenContext)
+
+    useEffect(() => {
+        fetchToken()
+    }, [])
 
     const handleUsername = () => {
-        setPlayerName(token, username)
+        setPlayerName(username)
             .then(res => console.log(res))
         
         // nav.navigate('Home')
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 35,
         color: '#fff',
         textAlign: 'center',
-        paddingBottom: 40
+        paddingBottom: 40,
+        letterSpacing: 1
     }
 })

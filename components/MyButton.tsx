@@ -47,5 +47,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textTransform: 'uppercase',
         fontSize: 20,
+        letterSpacing: 1
     }
 })

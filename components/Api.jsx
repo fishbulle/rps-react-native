@@ -11,22 +11,32 @@ export const setData = async (key, value) => {
     }
 }
 
-export const getData = async (key, value) => {
+export const getData = async (key) => {
     try {
         await AsyncStorage.getItem(key)
-            .then(() => console.log(key, value))
+            .then(() => console.log(key))
     } catch (error) {
         console.log(error)
     }
 }
 
-export const setPlayerName = async (token, username) => {
+export const fetchToken = async () => {
+    try {
+        const res = await fetch(baseURL + '/players/token')
+        const text = res.json()
+        return await setData('token', text)
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+export const setPlayerName = async (username) => {
     try {
         const res = await fetch(baseURL + '/players/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                token: token
+                token: await getData('token')
             },
             body: JSON.stringify({ username: username })
         });
@@ -36,13 +46,13 @@ export const setPlayerName = async (token, username) => {
     }
 }
 
-// export const startGame = async (token) => {
+// export const startGame = async () => {
 //     try {
 //         const response = await fetch(baseURL + '/games/create', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
-//                 token: token,
+//                 token: RpsApi.getToken(),
 //             },
 //         });
 //         const text = await response.json();
@@ -57,7 +67,7 @@ export const setPlayerName = async (token, username) => {
 //         const res = await fetch(baseURL + '/games');
 //         return await res.json();
 //     } catch (error) {
-//         return console.log(error);
+//         return console.log(`Something went wrong ${error}`);
 //     }
 // }
 
