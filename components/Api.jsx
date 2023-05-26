@@ -22,6 +22,7 @@ export const fetchToken = async () => {
     try {
         const res = await fetch(baseURL + '/players/token')
         const text = await res.json()
+        console.log(text)   // skriver ut ett token i konsolen, UTAN ""
         return await setData('token', text)
     } catch (e) {
         console.error(e)
@@ -37,8 +38,9 @@ export const setPlayerName = async (username) => {
                 token: await getData('token')
             },
             body: JSON.stringify({ username: username })
-        });
-        return await res.json()
+        })
+        const text = await res.json()
+        return console.log(text)  // skriver undefined i konsollen
     } catch (error) {
         return console.log(error);
     }
