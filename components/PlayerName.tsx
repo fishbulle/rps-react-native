@@ -1,5 +1,5 @@
 import { TextInput, StyleSheet, View } from "react-native"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { LMLight } from "./MyFonts"
@@ -12,13 +12,13 @@ export function PlayerName() {
     }
     const nav = useNavigation<Nav>()
     const [username, setUsername] = useState('')
-    const { token } = useContext(TokenContext)
+    const token = useContext(TokenContext)
 
     const handleUsername = () => {
         setPlayerName(token, username)
             .then(res => console.log(res))
-            .catch((error) => console.error(error));
-        nav.navigate('Home')
+        
+        // nav.navigate('Home')
     }
 
     return (

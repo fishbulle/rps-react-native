@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const baseURL = 'http://192.168.1.112:8080'
 
-export const setData = async (key: string, value: any) => {
+export const setData = async (key, value) => {
     try {
         await AsyncStorage.setItem(key, value)
             .then(() => console.log(key, value))
@@ -11,52 +11,38 @@ export const setData = async (key: string, value: any) => {
     }
 }
 
-export const getData = async (key: string) => {
+export const getData = async (key, value) => {
     try {
         await AsyncStorage.getItem(key)
-            .then(() => console.log(key))
+            .then(() => console.log(key, value))
     } catch (error) {
         console.log(error)
     }
 }
 
-export const fetchToken = () =>
-    fetch(baseURL + '/players/token')
-        .then((response) => response.json());
+export const setPlayerName = async (token, username) => {
+    try {
+        const res = await fetch(baseURL + '/players/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                token: token
+            },
+            body: JSON.stringify({ username: username })
+        });
+        return await res.json()
+    } catch (error) {
+        return console.log(error);
+    }
+}
 
-export const setPlayerName = (token: string, username: string) =>
-    fetch(baseURL + '/players/create', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            token: token,
-        },
-        body: JSON.stringify({ username: username })
-    });
-
-// export const setPlayerName = async (token, username) => {
-//     try {
-//         const res = await fetch(baseURL + '/players/create', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 token: token
-//             },
-//             body: JSON.stringify({ username: username })
-//         });
-//         return await res.json()
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
-
-// export const startGame = async () => {
+// export const startGame = async (token) => {
 //     try {
 //         const response = await fetch(baseURL + '/games/create', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
-//                 token: RpsApi.getToken(),
+//                 token: token,
 //             },
 //         });
 //         const text = await response.json();
@@ -71,7 +57,7 @@ export const setPlayerName = (token: string, username: string) =>
 //         const res = await fetch(baseURL + '/games');
 //         return await res.json();
 //     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
+//         return console.log(error);
 //     }
 // }
 

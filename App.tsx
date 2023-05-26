@@ -1,5 +1,5 @@
 import { Nav } from './components/Nav';
-import { TokenContextProvider } from './components/TokenContext';
+import { TokenContext, TokenContextProvider } from './components/TokenContext';
 
 export default function App() {
   return (
