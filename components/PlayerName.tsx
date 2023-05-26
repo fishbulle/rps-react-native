@@ -18,7 +18,6 @@ export function PlayerName() {
 
     const handleUsername = () => {
         setPlayerName(username)
-            .then(res => console.log(res))
         
         // nav.navigate('Home')
     }
