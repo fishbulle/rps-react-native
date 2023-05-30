@@ -43,7 +43,7 @@ export function PlayerName() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 4,
+        flex: 1.5,
         paddingLeft: 10,
         paddingRight: 10
     },

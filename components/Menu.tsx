@@ -39,7 +39,7 @@ export function Menu() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 1.5,
         paddingLeft: 10,
         paddingRight: 10
     },
