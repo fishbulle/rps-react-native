@@ -75,8 +75,9 @@ export function GamePage() {
                     onPress={() => handlePress('scissors')} />
             </View>
             <View style={styles.container3}>
-                {/* if player2 === win ? visa texten : visa null */}
-                <LMBoldItalic style={styles.result}>PLAYER 2 WINS!</LMBoldItalic>
+                {result === 'WIN' ? (<LMBoldItalic style={styles.result}>{player} WINS!</LMBoldItalic>) : null}
+                {result === 'LOSE' ? (<LMBoldItalic style={styles.result}>{opponent} WINS!</LMBoldItalic>) : null}
+                {result === 'DRAW' ? (<LMBoldItalic style={styles.result}>IT'S A DRAW!</LMBoldItalic>) : null}
             </View>
         </View>
     )
