@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { LMLight } from "./MyFonts"
-import { fetchToken, getData, setPlayerName } from "./Api"
+import { fetchToken, setPlayerName } from "./Api"
 import usePlayer from "../hooks/usePlayer"
 
 export function PlayerName() {
@@ -15,7 +15,7 @@ export function PlayerName() {
     const { setPlayer } = usePlayer()
 
     useEffect(() => {
-            fetchToken()
+            fetchToken()  // ev ändra till context
     }, [])
 
     const handleUsername = () => {
