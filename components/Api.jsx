@@ -96,35 +96,35 @@ export const joinGame = async (gameId) => {
     }
 }
 
-// export const makeMove = async (move) => {
-//     try {
-//         const res = await fetch(baseURL + `/games/update/${move}`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 token: RpsApi.getToken()
-//             },
-//             body: JSON.stringify({ 'gameId': RpsApi.getGameId() })
-//         });
-//         const response = await res.json();
-//         return response;
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
+export const makeMove = async (move) => {
+    try {
+        const res = await fetch(baseURL + `/games/update/${move}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                token: await getData('token')
+            },
+            body: JSON.stringify({ 'gameId': await getData('gameId') })
+        })
+        const text = await res.json()
+        return text
+    } catch (e) {
+        return console.error(e)
+    }
+}
 
-// export const gameInfo = async () => {
-//     try {
-//         const res = await fetch(baseURL + '/games/gameInfo', {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 gameId: RpsApi.getGameId(),
-//                 token: RpsApi.getToken()
-//             }
-//         });
-//         const response = await res.json();
-//         return response;
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
+export const gameInfo = async () => {
+    try {
+        const res = await fetch(baseURL + '/games/gameInfo', {
+            headers: {
+                'Content-Type': 'application/json',
+                gameId: await getData('gameId'),
+                token: await getData('token')
+            }
+        })
+        const text = await res.json()
+        return text
+    } catch (e) {
+        return console.error(e)
+    }
+}
