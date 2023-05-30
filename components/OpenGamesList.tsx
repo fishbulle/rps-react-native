@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { LMLight } from "./MyFonts";
-import { FlatList, StyleSheet, View, Text } from "react-native";
-import { openGames } from "./Api";
+import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
+import { joinGame, openGames } from "./Api";
 import useGames from "../hooks/useGames";
+import { Game } from "../services/game-service";
+import { useNavigation } from "@react-navigation/native";
 
 export function OpenGamesList() {
+    type Nav = {
+        navigate: (value: string) => void
+    }
+    const nav = useNavigation<Nav>()
     const { games, setGames } = useGames()
-    const [gameId, setGameId] = useState('')
 
     useEffect(() => {
         const getOpenGames = () => {
-            openGames().then(res => setGames(res))
+            openGames()
+                .then(res => setGames(res))
         }
 
         const interval = setInterval(() => {
@@ -22,6 +28,11 @@ export function OpenGamesList() {
         return () => clearInterval(interval)
     }, [])
 
+    const handleJoinGame = async (game: Game) => {
+        joinGame(game.gameId)
+        nav.navigate('Game')
+    }
+
     return (
         <View style={styles.container}>
             <LMLight style={styles.text}>OPEN GAMES:</LMLight>
@@ -29,9 +40,13 @@ export function OpenGamesList() {
                 data={games}
                 keyExtractor={(item) => item.gameId}
                 renderItem={({ item }) =>
-                    <LMLight style={styles.text}>
-                        {item.playerOne.username}
+                    <TouchableOpacity
+                        onPress={() => handleJoinGame(item)}
+                        key={item.gameId}>
+                        <LMLight style={styles.openGame}>
+                            {item.playerOne.username}
                         </LMLight>
+                    </TouchableOpacity>
                 } />
         </View>
     )
@@ -48,5 +63,10 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         paddingBottom: 40
+    },
+    openGame: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#fff'
     }
 })

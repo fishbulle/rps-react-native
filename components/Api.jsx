@@ -96,21 +96,21 @@ export const openGames = async () => {
 //     }
 // }
 
-// export const joinGame = async (gameId) => {
-//     try {
-//         const res = await fetch(baseURL + `/games/add/${gameId}`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 token: RpsApi.getToken(),
-//             }
-//         });
-//         const response = await res.json();
-//         return RpsApi.setGameId(response.gameId);
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
+export const joinGame = async (gameId) => {
+    try {
+        const res = await fetch(baseURL + `/games/add/${gameId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                token: await getData('token'),
+            }
+        })
+        const text = await res.json()
+        return await setData('gameId', text)
+    } catch (e) {
+        return console.error(e)
+    }
+}
 
 // export const makeMove = async (move) => {
 //     try {
