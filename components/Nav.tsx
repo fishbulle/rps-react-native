@@ -5,28 +5,7 @@ import { Home } from "../screens/HomeScreen"
 import { Game } from "../screens/GameScreen"
 import { OpenGames } from "../screens/OpenGamesScreen"
 
-// interface ITokenContext {
-//     token: string
-//     setToken: React.Dispatch<React.SetStateAction<string>>;
-// }
-
-// export const TokenContext = createContext<ITokenContext>({
-//     token: "",
-//     setToken: () => {
-//     }
-// });
-
 export function Nav() {
-    // const [token, setToken] = useState("");
-
-    // useEffect(() => {
-    //     fetchToken()
-    //         .then((newToken: string) => {
-    //             setToken(newToken)
-    //         })
-    //         .catch((error: any) => console.error(error));
-    // }, [])
-
     const Stack = createNativeStackNavigator()
 
     return (

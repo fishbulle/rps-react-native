@@ -2,8 +2,6 @@ import { View, StyleSheet } from "react-native";
 import { LMBoldItalic, LMLight, LMLightItalic } from "./MyFonts";
 import { MyButton } from "./MyButton";
 
-{/* spelsidan!!! */ }
-
 export function GamePage() {
 
     const handlePress = () => {

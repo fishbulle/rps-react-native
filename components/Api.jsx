@@ -80,22 +80,6 @@ export const openGames = async () => {
     }
 }
 
-// export const gameInfo = async () => {
-//     try {
-//         const res = await fetch(baseURL + '/games/gameInfo', {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 gameId: RpsApi.getGameId(),
-//                 token: RpsApi.getToken()
-//             }
-//         });
-//         const response = await res.json();
-//         return response;
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
-
 export const joinGame = async (gameId) => {
     try {
         const res = await fetch(baseURL + `/games/add/${gameId}`, {
@@ -121,6 +105,22 @@ export const joinGame = async (gameId) => {
 //                 token: RpsApi.getToken()
 //             },
 //             body: JSON.stringify({ 'gameId': RpsApi.getGameId() })
+//         });
+//         const response = await res.json();
+//         return response;
+//     } catch (error) {
+//         return console.log(`Something went wrong ${error}`);
+//     }
+// }
+
+// export const gameInfo = async () => {
+//     try {
+//         const res = await fetch(baseURL + '/games/gameInfo', {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 gameId: RpsApi.getGameId(),
+//                 token: RpsApi.getToken()
+//             }
 //         });
 //         const response = await res.json();
 //         return response;
