@@ -2,6 +2,7 @@ import { View, StyleSheet } from "react-native"
 import { MyButton } from "./MyButton"
 import { useNavigation } from "@react-navigation/native"
 import { LMLight } from "./MyFonts"
+import { startGame } from "./Api"
 
 export function Menu() {
     type Nav = {
@@ -10,12 +11,11 @@ export function Menu() {
     const nav = useNavigation<Nav>()
 
     const handleStartGame = () => {
-        console.log('Startar nytt spel...')
+        startGame()
         nav.navigate('Game')
     }
 
     const handleListOpenGames = () => {
-        console.log('Skickar dig till sidan för öppna spel...')
         nav.navigate('OpenGames')
     }
 
@@ -24,7 +24,6 @@ export function Menu() {
             <View>
                 <LMLight style={styles.text}>What do you want to do?</LMLight>
             </View>
-            {/* länkar till sidorna för starta nytt spel eller joina öppet spel */}
             <MyButton
                 text="Start New Game"
                 onPress={() => handleStartGame()} />

@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { MyButton } from "./MyButton"
 import { LMLight } from "./MyFonts"
-import { fetchToken, setPlayerName } from "./Api"
+import { fetchToken, getData, setPlayerName } from "./Api"
+import usePlayer from "../hooks/usePlayer"
 
 export function PlayerName() {
     type Nav = {
@@ -11,16 +12,19 @@ export function PlayerName() {
     }
     const nav = useNavigation<Nav>()
     const [username, setUsername] = useState('')
+    const { setPlayer } = usePlayer()
 
     useEffect(() => {
-        fetchToken()
+        if (getData('token') === null)
+            fetchToken()
+        else
+            nav.navigate('Home')
     }, [])
 
     const handleUsername = () => {
-        setPlayerName(username)
-        .then(res => console.log(res.username))
-        
-        // nav.navigate('Home')
+        setPlayerName(username)     
+            .then(res => setPlayer(res.data.username))   
+        nav.navigate('Home')
     }
 
     return (

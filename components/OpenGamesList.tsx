@@ -1,17 +1,41 @@
-import { LMLight} from "./MyFonts";
-import { StyleSheet, View } from "react-native";
+import { useEffect, useState } from "react";
+import { LMLight } from "./MyFonts";
+import { FlatList, StyleSheet, View, Text } from "react-native";
+import { openGames } from "./Api";
+import useGames from "../hooks/useGames";
 
-{/* flatList som mappar öppna spel
-    och tar spelaren till det öppna spelet den klickar på */ }
+export function OpenGamesList() {
+    const { games, setGames } = useGames()
+    const [gameId, setGameId] = useState('')
 
-    export function OpenGamesList() {
+    useEffect(() => {
+        const getOpenGames = () => {
+            openGames().then(res => setGames(res))
+        }
 
-        return (
-            <View style={styles.container}>
-                <LMLight style={styles.text}>OPEN GAMES:</LMLight>
-            </View>
-        )
-    }
+        const interval = setInterval(() => {
+            getOpenGames()
+        }, 1000)
+
+        getOpenGames()
+
+        return () => clearInterval(interval)
+    }, [])
+
+    return (
+        <View style={styles.container}>
+            <LMLight style={styles.text}>OPEN GAMES:</LMLight>
+            <FlatList
+                data={games}
+                keyExtractor={(item) => item.gameId}
+                renderItem={({ item }) =>
+                    <LMLight style={styles.text}>
+                        {item.playerOne.username}
+                        </LMLight>
+                } />
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {

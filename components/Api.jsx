@@ -24,7 +24,7 @@ export const fetchToken = async () => {
         const text = await res.json()
         return await setData('token', text)
     } catch (e) {
-        console.error(e)
+        return console.error(e)
     }
 }
 
@@ -40,35 +40,45 @@ export const setPlayerName = async (username) => {
         })
         const text = await res.json()
         return text
-    } catch (error) {
-        return console.log(error)
+    } catch (e) {
+        return console.log(e)
     }
 }
 
-// export const startGame = async () => {
-//     try {
-//         const response = await fetch(baseURL + '/games/create', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 token: RpsApi.getToken(),
-//             },
-//         });
-//         const text = await response.json();
-//         return RpsApi.setGameId(text.gameId);
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
+export const getPlayers = async () => {
+    try {
+        const res = await fetch(baseURL + '/players')
+        const text = await res.json()
+        return text
+    } catch (e) {
+        return console.error(e)
+    }
+}
 
-// export const openGames = async () => {
-//     try {
-//         const res = await fetch(baseURL + '/games');
-//         return await res.json();
-//     } catch (error) {
-//         return console.log(`Something went wrong ${error}`);
-//     }
-// }
+export const startGame = async () => {
+    try {
+        const response = await fetch(baseURL + '/games/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                token: await getData('token'),
+            },
+        })
+        const text = await response.json()
+        return await setData('gameId', text)
+    } catch (e) {
+        return console.error(e)
+    }
+}
+
+export const openGames = async () => {
+    try {
+        const res = await fetch(baseURL + '/games')
+        return await res.json()
+    } catch (e) {
+        return console.error(e)
+    }
+}
 
 // export const gameInfo = async () => {
 //     try {
