@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     opacity: {
         flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         marginLeft: 10,
         marginRight: 10,
         marginTop: 40,

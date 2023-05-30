@@ -55,12 +55,12 @@ export function OpenGamesList() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 4,
+        flex: 2,
         paddingLeft: 10,
         paddingRight: 10
     },
     text: {
-        fontSize: 35,
+        fontSize: 25,
         color: '#333',
         textAlign: 'center',
         paddingBottom: 10
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#333',
         textAlign: 'center',
-        paddingBottom: 40
+        paddingBottom: 40,
+        textDecorationLine: 'line-through'
     },
     openGame: {
         fontSize: 25,
