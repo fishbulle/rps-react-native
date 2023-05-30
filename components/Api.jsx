@@ -65,7 +65,7 @@ export const startGame = async () => {
             },
         })
         const text = await response.json()
-        return await setData('gameId', text)
+        return text
     } catch (e) {
         return console.error(e)
     }

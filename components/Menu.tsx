@@ -2,7 +2,7 @@ import { View, StyleSheet } from "react-native"
 import { MyButton } from "./MyButton"
 import { useNavigation } from "@react-navigation/native"
 import { LMLight } from "./MyFonts"
-import { startGame } from "./Api"
+import { setData, startGame } from "./Api"
 
 export function Menu() {
     type Nav = {
@@ -12,6 +12,7 @@ export function Menu() {
 
     const handleStartGame = () => {
         startGame()
+            .then(res => setData('gameId', res.gameId))
         nav.navigate('Game')
     }
 

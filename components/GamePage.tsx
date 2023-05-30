@@ -19,27 +19,25 @@ export function GamePage() {
             gameInfo()
                 .then(res => {
                     console.log(res)
+                    setGames(res)
+                    setPlayer(res.playerOne.username)
 
+                    if (res.playerTwo !== null) {
+                        setOpponent(res.playerTwo.username)
+                    }
 
-                                        // setGames(res)
-                    // setPlayer(res.playerOne.username)
+                    if (res.playerOneMove !== null
+                        && res.playerTwoMove !== null) {
+                        setResult(res.result)
 
-                    // if (res.playerTwo !== null) {
-                    //     setOpponent(res.playerTwo.username)
-                    // }
-
-                    // if (res.playerOneMove !== null
-                    //     && res.playerTwoMove !== null) {
-                    //     setResult(res.result)
-
-                    //     if (getData('token') === res.playerOne.playerId) {
-                    //         setPlayerMove(res.playerOneMove)
-                    //         setOpponentMove(res.playerTwoMove)
-                    //     } else if (getData('token') === res.playerTwo.playerId) {
-                    //         setPlayerMove(res.playerOneMove)
-                    //         setOpponentMove(res.playerTwoMove)
-                    //     }
-                    // }
+                        if (getData('token') === res.playerOne.playerId) {
+                            setPlayerMove(res.playerOneMove)
+                            setOpponentMove(res.playerTwoMove)
+                        } else if (getData('token') === res.playerTwo.playerId) {
+                            setPlayerMove(res.playerOneMove)
+                            setOpponentMove(res.playerTwoMove)
+                        }
+                    }
                 })
                 .catch(e => console.log(e))
         }
