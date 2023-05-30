@@ -90,7 +90,7 @@ export const joinGame = async (gameId) => {
             }
         })
         const text = await res.json()
-        return await setData('gameId', text)
+        return await setData('gameId', text.gameId)
     } catch (e) {
         return console.error(e)
     }
