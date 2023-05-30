@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { LMLight } from "./MyFonts";
+import { LMLight, LMLightItalic } from "./MyFonts";
 import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
 import { joinGame, openGames } from "./Api";
 import useGames from "../hooks/useGames";
@@ -35,7 +35,8 @@ export function OpenGamesList() {
 
     return (
         <View style={styles.container}>
-            <LMLight style={styles.text}>OPEN GAMES:</LMLight>
+            <LMLight style={styles.text}>OPEN GAMES</LMLight>
+            <LMLightItalic style={styles.text2}>CLICK TO JOIN</LMLightItalic>
             <FlatList
                 data={games}
                 keyExtractor={(item) => item.gameId}
@@ -62,10 +63,16 @@ const styles = StyleSheet.create({
         fontSize: 35,
         color: '#fff',
         textAlign: 'center',
+        paddingBottom: 10
+    },
+    text2: {
+        fontSize: 15,
+        color: '#fff',
+        textAlign: 'center',
         paddingBottom: 40
     },
     openGame: {
-        fontSize: 20,
+        fontSize: 25,
         textAlign: 'center',
         color: '#fff'
     }

@@ -1,4 +1,4 @@
-import { ImageBackground, SafeAreaView, StyleSheet } from "react-native"
+import { ImageBackground, SafeAreaView, StyleSheet, View } from "react-native"
 
 interface Props {
     children: any
@@ -6,11 +6,11 @@ interface Props {
 
 export const Background = ({ children }: Props) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <ImageBackground source={require('../assets/sky.jpg')} style={styles.image} resizeMode="cover">
                 {children}
             </ImageBackground>
-        </SafeAreaView>
+        </View>
     )
 }
 
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'center'
     }
 })

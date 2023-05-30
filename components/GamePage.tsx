@@ -3,7 +3,7 @@ import { LMBoldItalic, LMLight, LMLightItalic } from "./MyFonts";
 import { MyButton } from "./MyButton";
 import useGames from "../hooks/useGames";
 import { useEffect, useState } from "react";
-import { gameInfo, getData } from "./Api";
+import { gameInfo, getData, makeMove } from "./Api";
 
 export function GamePage() {
     const { setGames } = useGames()
@@ -51,10 +51,9 @@ export function GamePage() {
         return () => clearInterval(interval)
     }, [])
 
-
-
-    const handlePress = () => {
-
+    const handlePress = (move: string) => {
+        makeMove(move)
+            .then(res => setGames(res.sign))
     }
 
     return (
@@ -67,13 +66,13 @@ export function GamePage() {
             <View style={styles.container2}>
                 <MyButton
                     text="R"
-                    onPress={() => handlePress()} />
+                    onPress={() => handlePress('rock')} />
                 <MyButton
                     text="P"
-                    onPress={() => handlePress()} />
+                    onPress={() => handlePress('paper')} />
                 <MyButton
                     text="S"
-                    onPress={() => handlePress()} />
+                    onPress={() => handlePress('scissors')} />
             </View>
             <View style={styles.container3}>
                 {/* if player2 === win ? visa texten : visa null */}
