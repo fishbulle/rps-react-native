@@ -61,19 +61,19 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 35,
-        color: '#fff',
+        color: '#333',
         textAlign: 'center',
         paddingBottom: 10
     },
     text2: {
         fontSize: 15,
-        color: '#fff',
+        color: '#333',
         textAlign: 'center',
         paddingBottom: 40
     },
     openGame: {
         fontSize: 25,
         textAlign: 'center',
-        color: '#fff'
+        color: '#333'
     }
 })

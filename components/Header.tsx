@@ -17,19 +17,19 @@ export function Header() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 1,
         flexDirection: 'row',
-        marginTop: 100,
-        justifyContent: 'center'
+        marginTop: 60,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     text: {
         fontSize: 60,
-        color: '#fff'
+        color: '#333'
     },
     text2: {
         fontSize: 20,
-        color: '#fff',
-        paddingTop: 32,
+        color: '#333',
         textDecorationLine: 'line-through'
     }
 })

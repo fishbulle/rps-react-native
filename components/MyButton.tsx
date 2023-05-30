@@ -15,8 +15,8 @@ export const MyButton = ({ text, onPress, disabled }: Props) => {
                 style={({ pressed }) => [
                     {
                         backgroundColor: pressed
-                            ? 'rgb(210, 230, 255)'
-                            : '#000099'
+                            ? '#FFE27D'
+                            : '#FF7D7D'
                     },
                     styles.button
                 ]}

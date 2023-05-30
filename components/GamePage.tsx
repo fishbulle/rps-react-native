@@ -130,18 +130,18 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        color: '#fff',
+        color: '#333',
         textAlign: 'center',
         paddingBottom: 40
     },
     text2: {
         fontSize: 10,
-        color: '#fff',
+        color: '#333',
         paddingTop: 4
     },
     result: {
         fontSize: 40,
-        color: '#fff',
+        color: '#333',
         textAlign: 'center'
     },
     img: {
