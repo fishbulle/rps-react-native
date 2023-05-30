@@ -15,15 +15,12 @@ export function PlayerName() {
     const { setPlayer } = usePlayer()
 
     useEffect(() => {
-        if (getData('token') === null)
             fetchToken()
-        else
-            nav.navigate('Home')
     }, [])
 
     const handleUsername = () => {
         setPlayerName(username)     
-            .then(res => setPlayer(res.data.username))   
+            .then(res => setPlayer(res.username))   
         nav.navigate('Home')
     }
 
