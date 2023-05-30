@@ -1,4 +1,4 @@
-import { ImageBackground, SafeAreaView, StyleSheet, View } from "react-native"
+import { ImageBackground, StyleSheet, View } from "react-native"
 
 interface Props {
     children: any

@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Image } from "react-native";
 import { LMBoldItalic, LMLight, LMLightItalic } from "./MyFonts";
 import { MyButton } from "./MyButton";
 import useGames from "../hooks/useGames";
@@ -63,30 +63,39 @@ export function GamePage() {
                 <LMLightItalic style={styles.text2}> vs </LMLightItalic>
                 <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
             </View>
-            <View style={styles.container2}>
-                <MyButton
-                    text="R"
+            <View style={styles.container3}>
+                <Pressable
                     disabled={disable}
                     onPress={() => {
                         handlePress('rock')
                         setDisable(true)
-                    }} />
-                <MyButton
+                    }}>
+                    <Image
+                        source={require('../assets/rock.png')}
+                        style={styles.img} />
+                </Pressable>
+                <Pressable
                     disabled={disable}
-                    text="P"
                     onPress={() => {
                         handlePress('paper')
                         setDisable(true)
-                    }} />
-                <MyButton
+                    }}>
+                    <Image
+                        source={require('../assets/paper.png')}
+                        style={styles.img} />
+                </Pressable>
+                <Pressable
                     disabled={disable}
-                    text="S"
                     onPress={() => {
                         handlePress('scissors')
                         setDisable(true)
-                        }} />
+                    }}>
+                    <Image
+                        source={require('../assets/sax.png')}
+                        style={styles.img} />
+                </Pressable>
             </View>
-            <View style={styles.container3}>
+            <View style={styles.container4}>
                 {result === 'WIN' ? (
                     <LMBoldItalic style={styles.result}>{player} WINS!</LMBoldItalic>
                 ) : null}
@@ -105,29 +114,38 @@ const styles = StyleSheet.create({
     container: {
         flex: 4,
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        marginTop: 30
     },
     container2: {
         flexDirection: 'row',
         justifyContent: 'space-evenly'
     },
     container3: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    container4: {
         paddingTop: 50
     },
     text: {
-        fontSize: 25,
+        fontSize: 15,
         color: '#fff',
         textAlign: 'center',
         paddingBottom: 40
     },
     text2: {
-        fontSize: 15,
+        fontSize: 10,
         color: '#fff',
-        paddingTop: 8
+        paddingTop: 4
     },
     result: {
         fontSize: 40,
         color: '#fff',
         textAlign: 'center'
+    },
+    img: {
+        height: 100,
+        width: 100
     }
 })

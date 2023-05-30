@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 2,
         flexDirection: 'row',
-        paddingTop: 40,
+        marginTop: 100,
         justifyContent: 'center'
     },
     text: {
