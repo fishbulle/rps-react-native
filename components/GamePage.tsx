@@ -66,18 +66,36 @@ export function GamePage() {
             <View style={styles.container2}>
                 <MyButton
                     text="R"
-                    onPress={() => handlePress('rock')} />
+                    disabled={disable}
+                    onPress={() => {
+                        handlePress('rock')
+                        setDisable(true)
+                    }} />
                 <MyButton
+                    disabled={disable}
                     text="P"
-                    onPress={() => handlePress('paper')} />
+                    onPress={() => {
+                        handlePress('paper')
+                        setDisable(true)
+                    }} />
                 <MyButton
+                    disabled={disable}
                     text="S"
-                    onPress={() => handlePress('scissors')} />
+                    onPress={() => {
+                        handlePress('scissors')
+                        setDisable(true)
+                        }} />
             </View>
             <View style={styles.container3}>
-                {result === 'WIN' ? (<LMBoldItalic style={styles.result}>{player} WINS!</LMBoldItalic>) : null}
-                {result === 'LOSE' ? (<LMBoldItalic style={styles.result}>{opponent} WINS!</LMBoldItalic>) : null}
-                {result === 'DRAW' ? (<LMBoldItalic style={styles.result}>IT'S A DRAW!</LMBoldItalic>) : null}
+                {result === 'WIN' ? (
+                    <LMBoldItalic style={styles.result}>{player} WINS!</LMBoldItalic>
+                ) : null}
+                {result === 'LOSE' ? (
+                    <LMBoldItalic style={styles.result}>{opponent} WINS!</LMBoldItalic>
+                ) : null}
+                {result === 'DRAW' ? (
+                    <LMBoldItalic style={styles.result}>IT'S A DRAW!</LMBoldItalic>
+                ) : null}
             </View>
         </View>
     )
