@@ -28,7 +28,7 @@ export function GamePage() {
 
                     if (res.playerOneMove !== null
                         && res.playerTwoMove !== null) {
-                        setResult(res.result)
+                            setResult(res.result)
 
                         if (getData('token') === res.playerOne.playerId) {
                             setPlayerMove(res.playerOneMove)
@@ -58,54 +58,53 @@ export function GamePage() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.container2}>
+            <View style={styles.players}>
                 <LMLight style={styles.text}>{player}</LMLight>
-                <LMLightItalic style={styles.text2}> vs </LMLightItalic>
-                <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
             </View>
-            <View style={styles.container3}>
+            <View style={styles.imgContainer}>
                 <Pressable
-                    disabled={disable}
+                    // disabled={disable}
                     onPress={() => {
-                        handlePress('rock')
-                        setDisable(true)
+                        handlePress('scisscors')
+                        // setDisable(true)
                     }}>
                     <Image
-                        source={require('../assets/rock.png')}
+                        source={require('../assets/lemon.png')}
                         style={styles.img} />
                 </Pressable>
                 <Pressable
-                    disabled={disable}
+                    // disabled={disable}
                     onPress={() => {
                         handlePress('paper')
-                        setDisable(true)
+                        // setDisable(true)
                     }}>
                     <Image
-                        source={require('../assets/paper.png')}
+                        source={require('../assets/strawberry.png')}
                         style={styles.img} />
                 </Pressable>
                 <Pressable
-                    disabled={disable}
+                    // disabled={disable}
                     onPress={() => {
-                        handlePress('scissors')
-                        setDisable(true)
+                        handlePress('rock')
+                        // setDisable(true)
                     }}>
                     <Image
-                        source={require('../assets/sax.png')}
+                        source={require('../assets/apple.png')}
                         style={styles.img} />
                 </Pressable>
             </View>
-            <View style={styles.container4}>
-                {result === 'WIN' ? (
-                    <LMBoldItalic style={styles.result}>{player} WINS!</LMBoldItalic>
-                ) : null}
-                {result === 'LOSE' ? (
-                    <LMBoldItalic style={styles.result}>{opponent} WINS!</LMBoldItalic>
-                ) : null}
-                {result === 'DRAW' ? (
-                    <LMBoldItalic style={styles.result}>IT'S A DRAW!</LMBoldItalic>
-                ) : null}
+            <View style={styles.players}>
+                <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
             </View>
+            {result === 'WIN' ? (
+                <LMBoldItalic style={styles.result}>YOU WIN!</LMBoldItalic>
+            ) : null}
+            {result === 'LOSE' ? (
+                <LMBoldItalic style={styles.result}>YOU LOSE!</LMBoldItalic>
+            ) : null}
+            {result === 'DRAW' ? (
+                <LMBoldItalic style={styles.result}>IT'S A DRAW!</LMBoldItalic>
+            ) : null}
         </View>
     )
 }
@@ -117,22 +116,31 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         marginTop: 30
     },
-    container2: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly'
+    players: {
+        backgroundColor: '#fff',
+        marginTop: 20,
+        marginBottom: 40,
+        marginLeft: 70,
+        marginRight: 70,
+        padding: 20,
+        shadowColor: '#333',
+        shadowOffset: {
+            width: 2,
+            height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2
     },
-    container3: {
+    imgContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
-    },
-    container4: {
-        paddingTop: 50
+        justifyContent: 'space-around',
+        paddingTop: 60,
+        paddingBottom: 60
     },
     text: {
-        fontSize: 15,
+        fontSize: 22,
         color: '#333',
-        textAlign: 'center',
-        paddingBottom: 40
+        textAlign: 'center'
     },
     text2: {
         fontSize: 10,
@@ -140,12 +148,13 @@ const styles = StyleSheet.create({
         paddingTop: 4
     },
     result: {
-        fontSize: 40,
+        fontSize: 35,
         color: '#333',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 30
     },
     img: {
-        height: 100,
-        width: 100
+        height: 80,
+        width: 70
     }
 })
