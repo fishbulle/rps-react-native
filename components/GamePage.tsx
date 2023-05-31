@@ -90,15 +90,17 @@ export function GamePage() {
             <View style={styles.players}>
                 <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
             </View>
-            {result === 'WIN' ? (
-                <LMBoldItalic style={styles.result}>YOU WIN!</LMBoldItalic>
-            ) : null}
-            {result === 'LOSE' ? (
-                <LMBoldItalic style={styles.result}>YOU LOSE!</LMBoldItalic>
-            ) : null}
-            {result === 'DRAW' ? (
-                <LMBoldItalic style={styles.result}>IT'S A DRAW!</LMBoldItalic>
-            ) : null}
+            <View style={styles.result}>
+                {result === 'WIN' ? (
+                    <LMBoldItalic style={{}}>YOU WIN!</LMBoldItalic>
+                ) : null}
+                {result === 'LOSE' ? (
+                    <LMBoldItalic style={{}}>YOU LOSE!</LMBoldItalic>
+                ) : null}
+                {result === 'DRAW' ? (
+                    <LMBoldItalic style={{}}>IT'S A DRAW!</LMBoldItalic>
+                ) : null}
+            </View>
         </View>
     )
 }
