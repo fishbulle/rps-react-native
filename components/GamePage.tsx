@@ -1,4 +1,4 @@
-import { View, StyleSheet, Pressable, Image } from "react-native";
+import { View, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
 import { LMBoldItalic, LMLight, LMLightItalic } from "./MyFonts";
 import { MyButton } from "./MyButton";
 import useGames from "../hooks/useGames";
@@ -28,7 +28,7 @@ export function GamePage() {
 
                     if (res.playerOneMove !== null
                         && res.playerTwoMove !== null) {
-                            setResult(res.result)
+                        setResult(res.result)
 
                         if (getData('token') === res.playerOne.playerId) {
                             setPlayerMove(res.playerOneMove)
@@ -62,36 +62,30 @@ export function GamePage() {
                 <LMLight style={styles.text}>{player}</LMLight>
             </View>
             <View style={styles.imgContainer}>
-                <Pressable
-                    // disabled={disable}
+                <TouchableOpacity
                     onPress={() => {
-                        handlePress('scisscors')
-                        // setDisable(true)
+                        handlePress('scissors')
                     }}>
                     <Image
                         source={require('../assets/lemon.png')}
                         style={styles.img} />
-                </Pressable>
-                <Pressable
-                    // disabled={disable}
+                </TouchableOpacity>
+                <TouchableOpacity
                     onPress={() => {
                         handlePress('paper')
-                        // setDisable(true)
                     }}>
                     <Image
                         source={require('../assets/strawberry.png')}
                         style={styles.img} />
-                </Pressable>
-                <Pressable
-                    // disabled={disable}
+                </TouchableOpacity>
+                <TouchableOpacity
                     onPress={() => {
                         handlePress('rock')
-                        // setDisable(true)
                     }}>
                     <Image
                         source={require('../assets/apple.png')}
                         style={styles.img} />
-                </Pressable>
+                </TouchableOpacity>
             </View>
             <View style={styles.players}>
                 <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
@@ -138,7 +132,7 @@ const styles = StyleSheet.create({
         paddingBottom: 60
     },
     text: {
-        fontSize: 22,
+        fontSize: 20,
         color: '#333',
         textAlign: 'center'
     },
