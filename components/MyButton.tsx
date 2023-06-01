@@ -3,15 +3,14 @@ import { LM } from "./MyFonts"
 
 interface Props {
     text: string,
-    onPress(): void,
-    disabled: boolean
+    onPress(): void
 }
 
-export const MyButton = ({ text, onPress, disabled }: Props) => {
+export const MyButton = ({ text, onPress }: Props) => {
 
     return (
         <View style={styles.buttonContainer}>
-        <Pressable
+            <Pressable
                 style={({ pressed }) => [
                     {
                         backgroundColor: pressed
@@ -20,10 +19,9 @@ export const MyButton = ({ text, onPress, disabled }: Props) => {
                     },
                     styles.button
                 ]}
-            onPress={onPress}
-            disabled={disabled}>
-            <LM style={styles.buttonText}>{text}</LM>
-        </Pressable>
+                onPress={onPress}>
+                <LM style={styles.buttonText}>{text}</LM>
+            </Pressable>
         </View>
     )
 }

@@ -12,7 +12,6 @@ export function GamePage() {
     const [playerOneMove, setPlayerMove] = useState('')
     const [opponentMove, setOpponentMove] = useState('')
     const [result, setResult] = useState('')
-    const [disable, setDisable] = useState(false)
 
     useEffect(() => {
         const fetchGameInfo = () => {
@@ -137,11 +136,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#333',
         textAlign: 'center'
-    },
-    text2: {
-        fontSize: 10,
-        color: '#333',
-        paddingTop: 4
     },
     result: {
         fontSize: 35,
