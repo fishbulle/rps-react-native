@@ -1,6 +1,5 @@
-import { View, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
-import { LMBoldItalic, LMLight, LMLightItalic } from "./MyFonts";
-import { MyButton } from "./MyButton";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { LMBoldItalic, LMLight } from "./MyFonts";
 import useGames from "../hooks/useGames";
 import { useEffect, useState } from "react";
 import { gameInfo, getData, makeMove } from "./Api";
