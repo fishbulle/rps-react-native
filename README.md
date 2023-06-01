@@ -4,7 +4,7 @@ och webservices
 
 # Reflektion
 
-# Databas, externa API:er, webservices
+## Databas, externa API:er, webservices
 
 Jag stod i valet och kvalet om jag skulle köra på mitt RPS API en gång till eller om jag skulle skapa ett nytt för Memory, men landade i att det blev enklast att fortsätta med RPS då jag i princip nu kan mitt API innan- och utantill. Dessutom är Postgres den enda databasen jag har hunnit lära mig hittills så det valet kändes självklart. 
 
