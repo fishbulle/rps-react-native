@@ -17,7 +17,6 @@ export function GamePage() {
         const fetchGameInfo = () => {
             gameInfo()
                 .then(res => {
-                    console.log(res)
                     setGames(res)
                     setPlayer(res.playerOne.username)
 

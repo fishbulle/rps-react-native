@@ -26,11 +26,9 @@ export function Menu() {
                 <LMLight style={styles.text}>What do you want to do?</LMLight>
             </View>
             <MyButton
-                disabled={false}
                 text="Start New Game"
                 onPress={() => handleStartGame()} />
             <MyButton
-                disabled={false}
                 text="List Open Games"
                 onPress={() => handleListOpenGames()} />
         </View>

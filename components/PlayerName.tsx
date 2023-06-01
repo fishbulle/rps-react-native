@@ -34,7 +34,6 @@ export function PlayerName() {
                 value={username}
                 onChangeText={(value) => setUsername(value)} />
             <MyButton
-                disabled={false}
                 text="Let's Play!"
                 onPress={handleUsername} />
         </View>
