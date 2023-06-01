@@ -36,7 +36,7 @@ export function OpenGamesList() {
     return (
         <View style={styles.container}>
             <LMLight style={styles.text}>OPEN GAMES</LMLight>
-            <LMLightItalic style={styles.text2}>CLICK TO JOIN</LMLightItalic>
+            <View style={styles.border}></View>
             <FlatList
                 data={games}
                 keyExtractor={(item) => item.gameId}
@@ -44,9 +44,11 @@ export function OpenGamesList() {
                     <TouchableOpacity
                         onPress={() => handleJoinGame(item)}
                         key={item.gameId}>
-                        <LMLight style={styles.openGame}>
-                            {item.playerOne.username}
-                        </LMLight>
+                        <View style={styles.openGame}>
+                            <LMLight style={styles.openGameText}>
+                                {item.playerOne.username}
+                            </LMLight>
+                        </View>
                     </TouchableOpacity>
                 } />
         </View>
@@ -55,9 +57,11 @@ export function OpenGamesList() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 1.5,
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     text: {
         fontSize: 25,
@@ -65,16 +69,23 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingBottom: 10
     },
-    text2: {
-        fontSize: 15,
-        color: '#333',
-        textAlign: 'center',
-        paddingBottom: 40,
-        textDecorationLine: 'line-through'
+    border: {
+        backgroundColor: '#333',
+        height: 1.5,
+        width: '70%',
+        marginBottom: 20
     },
     openGame: {
+        backgroundColor: '#FFE27D',
+        margin: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingLeft: 10,
+        paddingRight: 10
+    },
+    openGameText: {
+        color: '#fff',
         fontSize: 25,
-        textAlign: 'center',
-        color: '#333'
+        textAlign: 'center'
     }
 })

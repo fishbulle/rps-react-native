@@ -13,10 +13,11 @@ export const ImageHeader = () => {
 
 const styles = StyleSheet.create({
     imgHeader: {
-        flex: 1,
+        flex: 0.5,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 40
     },
     img: {
         width: 50,
