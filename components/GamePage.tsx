@@ -56,6 +56,7 @@ export function GamePage() {
 
     return (
         <View style={styles.container}>
+            <LMBoldItalic style={styles.text2}>{playerOneMove}</LMBoldItalic>
             <View style={styles.players}>
                 <LMLight style={styles.text}>{player}</LMLight>
             </View>
@@ -85,6 +86,7 @@ export function GamePage() {
                         style={styles.img} />
                 </TouchableOpacity>
             </View>
+            <LMBoldItalic style={styles.text2}>{opponentMove}</LMBoldItalic>
             <View style={styles.players}>
                 <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
             </View>
@@ -136,7 +138,12 @@ const styles = StyleSheet.create({
         color: '#333',
         textAlign: 'center'
     },
-    result: {
+    text2: {
+        fontSize: 15,
+        textAlign: 'center',
+        color: '#333'
+    },
+    result: {  // background color?
         fontSize: 35,
         color: '#333',
         textAlign: 'center',
