@@ -10,8 +10,8 @@ Jag stod i valet och kvalet om jag skulle köra på mitt RPS API en gång till e
 
 Fick ändra lite i min Spring Boot backend då jag bestämde mig för att göra om Rock, Paper, Scissors till Lemon, Strawberry och Apple. I förra kursen skrev jag även om alla enpoints för att göra hanteringen mer generisk (create, add, update istället för att varje metod hade en egen endpoint).
 
-I själva fetchdelen försökte jag implementera en likadan generisk http-service som jag hade i förra projektet men fick inte rätt på det då man inte kunde använda sessionStorage i React Native och det gick inte att hämta AsyncStorage i en class (som http-service är). Och istället för Axios har jag använt fetch med async/await. 
+I själva fetchdelen försökte jag implementera en likadan generisk http-service med Axios som jag hade i förra projektet men fick inte rätt på det då man inte kunde använda sessionStorage i React Native och det inte går att hämta AsyncStorage för att använda som header i anrop. Istället har jag använt fetch med async/await samt skapat functioner för att lagra och hämta i AsyncStorage.
 
-Använder som sagt AsyncStorage för att spara token, men detta är enbart eftersom att jag inte fick till det med context. Är medveten om att tokens inte bör lagras på detta sätt men det är trots allt inte inloggningsuppgifter det handlar om i detta fall, utan bara spelar-ID.
+Använder AsyncStorage för att spara token och gameId, men detta är enbart eftersom att jag inte fick till det med context. Är medveten om att tokens inte bör lagras på detta sätt men det är trots allt inte inloggningsuppgifter det handlar om i detta fall, utan bara spelarens ID. 
 
 Har försökt hålla mitt projekt snyggt, strukuerat och städat genom att bryta ut kod till mindre komponenter samt hålla en logisk mappstruktur. 

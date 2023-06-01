@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { LMLight, LMLightItalic } from "./MyFonts";
 import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
 import { joinGame, openGames } from "./Api";

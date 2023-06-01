@@ -1,7 +1,7 @@
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { LMBoldItalic, LMLight } from "./MyFonts";
 import useGames from "../hooks/useGames";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { gameInfo, getData, makeMove } from "./Api";
 import { MyModal } from "./MyModal";
 
@@ -36,7 +36,7 @@ export function GamePage() {
                     if (res.playerOneMove && res.playerTwoMove) {
                         setResult(res.result)
 
-                        if (res.playerOne.userId === (getData('token'))) {
+                        if (res.playerOne.userId === getData('token')) {
                             setOpponentMove(res.playerTwoMove)
                             setPlayerMove(res.playerOneMove)
                         } else {
