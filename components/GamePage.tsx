@@ -119,7 +119,7 @@ export function GamePage() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 4,
+        flex: 2,
         paddingLeft: 10,
         paddingRight: 10,
         marginTop: 30
