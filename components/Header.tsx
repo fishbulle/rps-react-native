@@ -1,7 +1,7 @@
 import { LMBoldItalic, LMLightItalic } from "./MyFonts";
 import { StyleSheet, View } from "react-native";
 
-export function Header() {
+export const Header = () => {
 
     return (
         <View style={styles.container}>

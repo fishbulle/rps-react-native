@@ -3,50 +3,54 @@ import { LMBoldItalic, LMLight } from "./MyFonts";
 import useGames from "../hooks/useGames";
 import { useEffect, useState } from "react";
 import { gameInfo, getData, makeMove } from "./Api";
+import { MyModal } from "./MyModal";
 
 export function GamePage() {
     const { setGames } = useGames()
     const [player, setPlayer] = useState('')
     const [opponent, setOpponent] = useState(null)
-    const [playerOneMove, setPlayerMove] = useState('')
+    const [playerMove, setPlayerMove] = useState('')
     const [opponentMove, setOpponentMove] = useState('')
     const [result, setResult] = useState('')
 
     useEffect(() => {
-        const fetchGameInfo = () => {
-            gameInfo()
-                .then(res => {
-                    setGames(res)
-                    setPlayer(res.playerOne.username)
-
-                    if (res.playerTwo !== null) {
-                        setOpponent(res.playerTwo.username)
-                    }
-
-                    if (res.playerOneMove !== null
-                        && res.playerTwoMove !== null) {
-                        setResult(res.result)
-
-                        if (getData('token') === res.playerOne.playerId) {
-                            setPlayerMove(res.playerOneMove)
-                            setOpponentMove(res.playerTwoMove)
-                        } else if (getData('token') === res.playerTwo.playerId) {
-                            setPlayerMove(res.playerOneMove)
-                            setOpponentMove(res.playerTwoMove)
-                        }
-                    }
-                })
-                .catch(e => console.log(e))
-        }
-
         const interval = setInterval(() => {
-            fetchGameInfo()
+            gameInfo().then((res) => {
+                setGames(res)
+                setPlayer(res.playerOne.username)
+
+                if (res.playerTwo !== null) {
+                    setOpponent(res.playerTwo.username)
+                }
+
+                if (res.playerOne && res.playerTwo) {
+                    return clearInterval(interval)
+                }
+            })
+                .catch(e => console.log(e.message))
         }, 1000)
 
-        fetchGameInfo()
+        if (opponent) {
+            const newInterval = setInterval(() => {
+                gameInfo().then(res => {
+                    if (res.playerOneMove && res.playerTwoMove) {
+                        setResult(res.result)
 
-        return () => clearInterval(interval)
-    }, [])
+                        if (res.playerOne.userId === (getData('token'))) {
+                            setOpponentMove(res.playerTwoMove)
+                            setPlayerMove(res.playerOneMove)
+                        } else {
+                            setOpponentMove(res.playerOneMove)
+                            setPlayerMove(res.playerTwoMove)
+                        }
+
+                        clearInterval(newInterval)
+                    }
+                })
+            }, 1000)
+        }
+
+    }, [opponent])
 
     const handlePress = (move: string) => {
         makeMove(move)
@@ -55,14 +59,16 @@ export function GamePage() {
 
     return (
         <View style={styles.container}>
-            <LMBoldItalic style={styles.text2}>{playerOneMove}</LMBoldItalic>
+            <View>
+                <LMBoldItalic style={styles.text2}>{playerMove}</LMBoldItalic>
+            </View>
             <View style={styles.players}>
                 <LMLight style={styles.text}>{player}</LMLight>
             </View>
             <View style={styles.imgContainer}>
                 <TouchableOpacity
                     onPress={() => {
-                        handlePress('scissors')
+                        handlePress('lemon')
                     }}>
                     <Image
                         source={require('../assets/lemon.png')}
@@ -70,7 +76,7 @@ export function GamePage() {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
-                        handlePress('paper')
+                        handlePress('strawberry')
                     }}>
                     <Image
                         source={require('../assets/strawberry.png')}
@@ -78,28 +84,35 @@ export function GamePage() {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
-                        handlePress('rock')
+                        handlePress('apple')
                     }}>
                     <Image
                         source={require('../assets/apple.png')}
                         style={styles.img} />
                 </TouchableOpacity>
             </View>
-            <LMBoldItalic style={styles.text2}>{opponentMove}</LMBoldItalic>
+            <View>
+                <LMBoldItalic style={styles.text2}>{opponentMove}</LMBoldItalic>
+            </View>
+
             <View style={styles.players}>
                 <LMLight style={styles.text}>{opponent ? opponent : 'Opponent missing'}</LMLight>
             </View>
-            <View style={styles.result}>
-                {result === 'WIN' ? (
-                    <LMBoldItalic style={{}}>YOU WIN!</LMBoldItalic>
-                ) : null}
-                {result === 'LOSE' ? (
-                    <LMBoldItalic style={{}}>YOU LOSE!</LMBoldItalic>
-                ) : null}
-                {result === 'DRAW' ? (
-                    <LMBoldItalic style={{}}>IT'S A DRAW!</LMBoldItalic>
-                ) : null}
-            </View>
+            {result ? (
+                <MyModal>
+                    <View style={styles.result}>
+                        {result === 'WIN' ? (
+                            <Image style={styles.resultImg} source={require('../assets/winner.png')} />
+                        ) : null}
+                        {result === 'LOSE' ? (
+                            <Image style={styles.resultImg} source={require('../assets/loser.png')} />
+                        ) : null}
+                        {result === 'DRAW' ? (
+                            <Image style={styles.resultImg} source={require('../assets/draw.png')} />
+                        ) : null}
+                    </View>
+                </MyModal>
+            ) : null}
         </View>
     )
 }
@@ -142,11 +155,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333'
     },
-    result: {  // background color?
-        fontSize: 35,
-        color: '#333',
-        textAlign: 'center',
-        marginTop: 30
+    result: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    resultImg: {
+        width: 300,
+        resizeMode: 'contain'
     },
     img: {
         height: 80,
