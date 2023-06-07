@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, View } from "react-native"
+import { ImageBackground, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from "react-native"
 
 interface Props {
     children: any
@@ -6,13 +6,18 @@ interface Props {
 
 export const Background = ({ children }: Props) => {
     return (
-        <View style={styles.container}>
-            <ImageBackground source={require('../assets/melon.jpg')} style={styles.image} resizeMode="cover">
-                <View style={styles.opacity}>
-                    {children}
-                </View>
-            </ImageBackground>
-        </View>
+        <TouchableWithoutFeedback
+            onPress={() => {
+                Keyboard.dismiss()
+            }}>
+            <View style={styles.container}>
+                <ImageBackground source={require('../assets/melon.jpg')} style={styles.image} resizeMode="cover">
+                    <View style={styles.opacity}>
+                        {children}
+                    </View>
+                </ImageBackground>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 
