@@ -9,22 +9,22 @@ export function Nav() {
     const Stack = createNativeStackNavigator()
 
     return (
-            <NavigationContainer>
-                <Stack.Navigator
-                    initialRouteName="Login">
-                    <Stack.Screen
-                        options={{ headerShown: false }}
-                        name='Login' component={Login} />
-                    <Stack.Screen
-                        options={{ headerShown: false }}
-                        name='Home' component={Home} />
-                    <Stack.Screen
-                        options={{ headerShown: false }}
-                        name='Game' component={Game} />
-                    <Stack.Screen
-                        options={{ headerShown: false }}
-                        name='OpenGames' component={OpenGames} />
-                </Stack.Navigator>
-            </NavigationContainer>
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName="Login">
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name='Login' component={Login} />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name='Home' component={Home} />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name='Game' component={Game} />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name='OpenGames' component={OpenGames} />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }

@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { LMLight, LMLightItalic } from "./MyFonts";
+import { useEffect } from "react";
+import { LMLight } from "./MyFonts";
 import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
 import { joinGame, openGames } from "./Api";
 import useGames from "../hooks/useGames";

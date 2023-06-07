@@ -4,9 +4,9 @@ import { Header } from "../components/Header";
 
 export function Game() {
     return (
-            <Background>
-                <Header />
-                <GamePage />
-            </Background> 
+        <Background>
+            <Header />
+            <GamePage />
+        </Background>
     )
 }

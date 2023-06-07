@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { View, ScrollView, StyleSheet, Modal } from 'react-native'
+import { View, StyleSheet, Modal } from 'react-native'
 import { MyButton } from './MyButton'
-import { LMBold } from './MyFonts'
 
 interface Props {
     children: any

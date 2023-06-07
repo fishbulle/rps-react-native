@@ -1,7 +1,7 @@
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { LMBoldItalic, LMLight } from "./MyFonts";
 import useGames from "../hooks/useGames";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { gameInfo, getData, makeMove } from "./Api";
 import { MyModal } from "./MyModal";
 

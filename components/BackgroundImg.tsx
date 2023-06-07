@@ -9,7 +9,7 @@ export const Background = ({ children }: Props) => {
         <View style={styles.container}>
             <ImageBackground source={require('../assets/melon.jpg')} style={styles.image} resizeMode="cover">
                 <View style={styles.opacity}>
-                {children}
+                    {children}
                 </View>
             </ImageBackground>
         </View>
